@@ -1,0 +1,67 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 Arial;}}\viewkind4\uc1\pard\sa200\sl276\slmult1\qc\f0\fs24\b Tabla STRIDE - Amenazas\b0\par\pard\sa200\sl276\slmult1\par
+\trowd\cellx1400\cellx3200\cellx7000\cellx10000\cellx14000\cellx18000
+\pard\intbl\f0\fs20\b Amenaza (STRIDE)\b0\cell
+\pard\intbl\f0\fs20\b Descripción\b0\cell
+\pard\intbl\f0\fs20\b Ejemplos en este repositorio\b0\cell
+\pard\intbl\f0\fs20\b Controles / Mitigaciones\b0\cell
+\pard\intbl\f0\fs20\b Cómo verificar / Métricas\b0\cell
+\pard\intbl\f0\fs20\b Impacto\b0\cell
+\row
+
+\trowd\cellx1400\cellx3200\cellx7000\cellx10000\cellx14000\cellx18000
+\pard\intbl\f0\fs18 Spoofing\cell
+\pard\intbl\f0\fs18 Suplantación de identidad; un atacante se hace pasar por una entidad legítima (usuario, servicio, CI runner).\cell
+\pard\intbl\f0\fs18 Uso de tokens/cuentas comprometidas en scripts CI; commits firmados falsos; pushes desde cuentas no autorizadas.\cell
+\pard\intbl\f0\fs18 Autenticación fuerte (2FA), gestión de secretos, rotación de tokens, uso de GitHub Apps con permisos mínimos, firma de commits/PKI cuando proceda.\cell
+\pard\intbl\f0\fs18 % de cuentas con 2FA, número de tokens con permisos excesivos, resultados de secret scanning, número de accesos fallidos/inesperados en logs.\cell
+\pard\intbl\f0\fs18 Acceso no autorizado a repositorio o CI, cambios maliciosos, despliegues no autorizados.\cell
+\row
+
+\trowd\cellx1400\cellx3200\cellx7000\cellx10000\cellx14000\cellx18000
+\pard\intbl\f0\fs18 Tampering (Manipulación)\cell
+\pard\intbl\f0\fs18 Modificación no autorizada de código, dependencias o artefactos.\cell
+\pard\intbl\f0\fs18 Alteración de scripts Shell, packages.js con dependencias comprometidas, Dockerfiles con instrucciones maliciosas o imágenes adulteradas.\cell
+\pard\intbl\f0\fs18 Branch protection, revisiones de código obligatorias, lockfiles en control (package-lock.json), escaneo de dependencias (Dependabot/Snyk), firma/escaneo de imágenes Docker (cosign/trivy).\cell
+\pard\intbl\f0\fs18 Número de PRs rechazados por firmas/escaneos, vulnerabilidades abiertas en dependencias, resultados de escaneo de imágenes.\cell
+\pard\intbl\f0\fs18 Introducción de backdoors, fallo de integridad en producción, compromisos de la cadena de suministro.\cell
+\row
+
+\trowd\cellx1400\cellx3200\cellx7000\cellx10000\cellx14000\cellx18000
+\pard\intbl\f0\fs18 Repudiation (Repudio)\cell
+\pard\intbl\f0\fs18 Negación de acciones realizadas por usuarios o servicios; falta de trazabilidad.\cell
+\pard\intbl\f0\fs18 Commits/merges sin autoría clara, falta de registros de despliegue en CI, logs incompletos.\cell
+\pard\intbl\f0\fs18 Forzar firmas de commits/tags, habilitar logs de auditoría en la organización, conservar registros de ejecución de CI y despliegues con metadatos.\cell
+\pard\intbl\f0\fs18 Porcentaje de commits firmados, existencia y retención de logs de CI/despliegue, número de merges sin revisiones.\cell
+\pard\intbl\f0\fs18 Dificultad para investigar incidentes, responsabilidad legal, cambios no atribuidos.\cell
+\row
+
+\trowd\cellx1400\cellx3200\cellx7000\cellx10000\cellx14000\cellx18000
+\pard\intbl\f0\fs18 Information Disclosure (Divulgación)\cell
+\pard\intbl\f0\fs18 Exposición de datos sensibles o secretos a usuarios no autorizados.\cell
+\pard\intbl\f0\fs18 Fugas en commits (.env, credenciales en scripts), logs que contienen secretos, imágenes Docker con secretos embebidos.\cell
+\pard\intbl\f0\fs18 Secret scanning, .gitignore apropiado, uso de GitHub Secrets, eliminación de secretos históricos (git-secrets, BFG), cifrado de secretos en tránsito y repositorios remotos.\cell
+\pard\intbl\f0\fs18 Resultado del secret scan, número de secretos detectados, incidencias de exposición encontradas en revisiones de código.\cell
+\pard\intbl\f0\fs18 Compromiso de credenciales, acceso a recursos externos, filtración de información sensitiva.\cell
+\row
+
+\trowd\cellx1400\cellx3200\cellx7000\cellx10000\cellx14000\cellx18000
+\pard\intbl\f0\fs18 Denial of Service (DoS)\cell
+\pard\intbl\f0\fs18 Interrupción o degradación del servicio o de pipelines CI/CD.\cell
+\pard\intbl\f0\fs18 Sobrecarga de pipelines por jobs infinitos, uso malicioso de runners o recursos de la infraestructura de CI, builds que consumen recursos excesivos.\cell
+\pard\intbl\f0\fs18 Limitar recursos en runners/contenedores, timeouts en jobs, cuotas para ejecuciones de CI, monitorización de uso y alertas, runbooks de recuperación.\cell
+\pard\intbl\f0\fs18 Métricas de duración y uso de recursos de builds, número de ejecuciones fallidas por timeout, alertas de uso anómalo.\cell
+\pard\intbl\f0\fs18 Paralización del pipeline, retrasos en despliegues, costes por consumo excesivo de recursos.\cell
+\row
+
+\trowd\cellx1400\cellx3200\cellx7000\cellx10000\cellx14000\cellx18000
+\pard\intbl\f0\fs18 Elevation of Privilege (Elevación de privilegios)\cell
+\pard\intbl\f0\fs18 Un atacante obtiene privilegios mayores a los autorizados.\cell
+\pard\intbl\f0\fs18 Tokens con permisos de administrador expuestos, workflows de CI que ejecutan comandos con permisos elevados, contenedores que corren como root.\cell
+\pard\intbl\f0\fs18 Principio de menor privilegio para tokens y runners, revisión de permisos de GitHub Apps y personal access tokens, evitar containers corriendo como root, uso de roles y policies.\cell
+\pard\intbl\f0\fs18 Auditoría de permisos de tokens, número de workflows que usan permisos elevadas, resultados de scans de configuración de contenedores.\cell
+\pard\intbl\f0\fs18 Compromiso total del repositorio/infraestructura, cambios irreversibles, escalada hacia sistemas externos.\cell
+\row
+
+\pard\sa200\sl276\slmult1\par
+\pard\f0\fs16\i Nota: la tabla está adaptada al repositorio con JavaScript, scripts Shell y Dockerfiles. Puedo también generar una versión Markdown o añadir controles concretos (Dependabot, acciones de GitHub, cosign, pre-commit hooks) si lo deseas.\i0\par
+}
