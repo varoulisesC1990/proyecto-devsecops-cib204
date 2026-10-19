@@ -1,0 +1,53 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 Arial;}}\viewkind4\uc1\pard\sa200\sl276\slmult1\qc\f0\fs24\b Tabla - Amenazas STRIDE\b0\par\pard\sa200\sl276\slmult1\par
+\trowd\cellx2200\cellx5200\cellx9200\cellx12000
+\pard\intbl\f0\fs20\b Amenaza (STRIDE)\b0\cell
+\pard\intbl\f0\fs20\b Componente afectado\b0\cell
+\pard\intbl\f0\fs20\b Ejemplo de ataque\b0\cell
+\pard\intbl\f0\fs20\b Control / mitigaci\'f3n\b0\cell
+\row
+
+\trowd\cellx2200\cellx5200\cellx9200\cellx12000
+\pard\intbl\f0\fs18 Suplantaci\'f3n (Spoofing)\cell
+\pard\intbl\f0\fs18 Acceso a cuentas de GitHub, runners, servicios de CI/CD, API tokens y cuentas de despliegue\cell
+\pard\intbl\f0\fs18 Ataque: robo de credenciales, uso de token comprometido para empujar commits o desencadenar pipelines maliciosos.\cell
+\pard\intbl\f0\fs18 Controles: 2FA/ MFA obligatorio, uso de GitHub Apps con permisos mínimos, rotaci\'f3n de tokens, GitHub Secrets, revisiones de permisos y registro de sesiones.\cell
+\row
+
+\trowd\cellx2200\cellx5200\cellx9200\cellx12000
+\pard\intbl\f0\fs18 Manipulaci\'f3n (Tampering)\cell
+\pard\intbl\f0\fs18 C\'f3digo fuente, scripts Shell, Dockerfiles, artefactos y dependencias\cell
+\pard\intbl\f0\fs18 Ataque: comprometer un Dockerfile o pipeline para inyectar malware en la imagen; modificar dependencias para introducir backdoors.\cell
+\pard\intbl\f0\fs18 Controles: protecci\'f3n de ramas, revisi\'f3n de c\'f3digo obligatoria, firma de commits, escaneo SCA (Dependabot/Snyk), escaneo de im\'e1genes, SBOM y bloqueo de cambios directos al main.\cell
+\row
+
+\trowd\cellx2200\cellx5200\cellx9200\cellx12000
+\pard\intbl\f0\fs18 Repudio (Repudiation)\cell
+\pard\intbl\f0\fs18 Historial de commits, acciones de despliegue, logs de CI/CD y auditor\'eda de accesos\cell
+\pard\intbl\f0\fs18 Ejemplo: un actor niega haber realizado un despliegue malicioso porque no hay evidencia firme en los logs o los commits no est\'e1n firmados.\cell
+\pard\intbl\f0\fs18 Controles: firmas de commits (GPG), registros de auditor\'eda habilitados, logs centralizados e inmutables, pol\'edticas de aprobaci\'f3n en PRs y conservaci\'f3n de registros.\cell
+\row
+
+\trowd\cellx2200\cellx5200\cellx9200\cellx12000
+\pard\intbl\f0\fs18 Divulgaci\'f3n de informaci\'f3n (Information Disclosure)\cell
+\pard\intbl\f0\fs18 Credenciales en repositorio, archivos .env, secretos en Dockerfiles, historiales de commits, artefactos de build, dependencias con datos sensibles\cell
+\pard\intbl\f0\fs18 Ejemplo: filtrado de claves API o contrase\~nas en un commit; exposici\'f3n de secretos en una imagen Docker publicada.\cell
+\pard\intbl\f0\fs18 Controles: secret scanning, GitHub Secrets, evitar commits de .env, eliminar secretos en historia (git-filter-repo), cifrado de artefactos, control de acceso a repositorios y escaneo de im\'e1genes.\cell
+\row
+
+\trowd\cellx2200\cellx5200\cellx9200\cellx12000
+\pard\intbl\f0\fs18 Denegaci\'f3n de servicio (DoS)\cell
+\pard\intbl\f0\fs18 Pipelines CI/CD, runners autohospedados, servidores de despliegue, almacenamiento de artefactos\cell
+\pard\intbl\f0\fs18 Ejemplo: inundar los runners con ejecuciones o provocar fallos en servicios externos para interrumpir pipelines y despliegues.\cell
+\pard\intbl\f0\fs18 Controles: cuotas y l\'edmites en pipelines, runners redundantes, escalado controlado, monitorizaci\'f3n y alertas, plan de continuidad y backups de artefactos.\cell
+\row
+
+\trowd\cellx2200\cellx5200\cellx9200\cellx12000
+\pard\intbl\f0\fs18 Elevaci\'f3n de privilegios (Elevation of Privilege)\cell
+\pard\intbl\f0\fs18 Acciones en CI, despliegues, contenedores, acceso a secretos y dependencias con permisos excesivos\cell
+\pard\intbl\f0\fs18 Ejemplo: ejecutar un script en pipeline que obtiene credenciales y las usa para acceder a recursos de producci\'f3n con permisos de administrador.\cell
+\pard\intbl\f0\fs18 Controles: principio de menor privilegio (RBAC), segregaci\'f3n de entornos, revisiones de permisos de GitHub Apps y tokens, escaneo de permisos y uso de cuentas de servicio con permisos limitados.\cell
+\row
+
+\pard\sa200\sl276\slmult1\par
+\pard\f0\fs16\i Nota: la tabla est\'e1 adaptada al repositorio (JavaScript, Shell y Dockerfile). Ajustar controles espec\'edficos seg\'fan el entorno de despliegue y pol\'edticas organizacionales.\i0\par
+}
