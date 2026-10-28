@@ -1,0 +1,94 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 Arial;}}\viewkind4\uc1\pard\sa200\sl276\slmult1\qc\f0\fs24\b Hallazgos de seguridad detectados\b0\par\pard\sa200\sl276\slmult1\par
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs18\b ID\b0\cell
+\pard\intbl\f0\fs18\b Prueba/Herramienta\b0\cell
+\pard\intbl\f0\fs18\b Dónde (componente)\b0\cell
+\pard\intbl\f0\fs18\b Hallazgo y CWE\b0\cell
+\pard\intbl\f0\fs18\b Riesgo\b0\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-01\cell
+\pard\intbl\f0\fs16 Secretos / Gitleaks\cell
+\pard\intbl\f0\fs16 servidor/.env, config.js\cell
+\pard\intbl\f0\fs16 Secretos hardcodeados en variables de entorno y configuración (CWE-798, CWE-259)\cell
+\pard\intbl\f0\fs16 Alto\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-02\cell
+\pard\intbl\f0\fs16 SCA / npm audit\cell
+\pard\intbl\f0\fs16 servidor/package.json\cell
+\pard\intbl\f0\fs16 Dependencias con vulnerabilidades conocidas y versión antigua (CWE-1104)\cell
+\pard\intbl\f0\fs16 Alto\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-03\cell
+\pard\intbl\f0\fs16 SAST / Semgrep + CodeQL\cell
+\pard\intbl\f0\fs16 servidor/db.js\cell
+\pard\intbl\f0\fs16 Inyección SQL por concatenación directa de entrada del usuario en la consulta (CWE-89)\cell
+\pard\intbl\f0\fs16 Crítico\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-04\cell
+\pard\intbl\f0\fs16 SAST / Semgrep + CodeQL\cell
+\pard\intbl\f0\fs16 servidor/auth.js\cell
+\pard\intbl\f0\fs16 Validación JWT insegura, aceptación de algoritmos débiles y decodificación sin verificar firma (CWE-347, CWE-287)\cell
+\pard\intbl\f0\fs16 Crítico\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-05\cell
+\pard\intbl\f0\fs16 DAST / OWASP ZAP\cell
+\pard\intbl\f0\fs16 servidor/servidor.js\cell
+\pard\intbl\f0\fs16 CORS excesivamente permisivo, permite cualquier origen y facilita acceso no autorizado (CWE-942)\cell
+\pard\intbl\f0\fs16 Alto\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-06\cell
+\pard\intbl\f0\fs16 DAST / OWASP ZAP\cell
+\pard\intbl\f0\fs16 servidor/servidor.js\cell
+\pard\intbl\f0\fs16 Falta de cabeceras de seguridad (CSP, X-Frame-Options, X-Content-Type-Options, HSTS, etc.) (CWE-693)\cell
+\pard\intbl\f0\fs16 Medio\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-07\cell
+\pard\intbl\f0\fs16 SAST / Semgrep + CodeQL\cell
+\pard\intbl\f0\fs16 servidor/servidor.js\cell
+\pard\intbl\f0\fs16 Uso de eval() sobre entrada del usuario, permitiendo ejecución de código arbitrario (CWE-95)\cell
+\pard\intbl\f0\fs16 Crítico\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-08\cell
+\pard\intbl\f0\fs16 SAST / Semgrep + CodeQL\cell
+\pard\intbl\f0\fs16 servidor/servidor.js\cell
+\pard\intbl\f0\fs16 Inyección de comandos del sistema operativo mediante exec() con entrada no saneada (CWE-78)\cell
+\pard\intbl\f0\fs16 Crítico\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-09\cell
+\pard\intbl\f0\fs16 SAST / Semgrep + CodeQL\cell
+\pard\intbl\f0\fs16 servidor/servidor.js\cell
+\pard\intbl\f0\fs16 Falta de validación de entrada y control de tamaño de payload; riesgo de abuso y DoS (CWE-20)\cell
+\pard\intbl\f0\fs16 Medio\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-10\cell
+\pard\intbl\f0\fs16 SAST / Semgrep + CodeQL\cell
+\pard\intbl\f0\fs16 servidor/servidor.js\cell
+\pard\intbl\f0\fs16 Exposición de detalles internos mediante stack trace en respuestas HTTP (CWE-209)\cell
+\pard\intbl\f0\fs16 Medio\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-11\cell
+\pard\intbl\f0\fs16 Imagen / Trivy\cell
+\pard\intbl\f0\fs16 servidor/Dockerfile\cell
+\pard\intbl\f0\fs16 Imagen base no reproducible y con vulnerabilidades conocidas; copia amplia del contexto del proyecto (CWE-1104, CWE-538)\cell
+\pard\intbl\f0\fs16 Alto\cell
+\row
+\trowd\cellx1400\cellx2800\cellx3600\cellx7600\cellx1800
+\pard\intbl\f0\fs16 H-12\cell
+\pard\intbl\f0\fs16 Imagen / Trivy\cell
+\pard\intbl\f0\fs16 servidor/Dockerfile\cell
+\pard\intbl\f0\fs16 Contenedor ejecutándose como root y sin reducción de privilegios (CWE-250)\cell
+\pard\intbl\f0\fs16 Alto\cell
+\row
+\pard\sa200\sl276\slmult1\par
+}\par
