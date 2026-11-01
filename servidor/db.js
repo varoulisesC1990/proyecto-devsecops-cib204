@@ -4,14 +4,14 @@
 // ============================================================================
 //
 //  Este modulo simula una pequena base de datos donde se guarda una bitacora
-//  de las operaciones de cifrado. Se usa el driver 'mysql' (JavaScript puro)
+//  de las operaciones de cifrado. Se usa el driver mysql2.
 //  para que el analisis estatico reconozca el "sink" de SQL.
 //
 //  Nota didactica: no se necesita un MySQL real corriendo. Si la conexion
 //  falla, la consulta se atrapa y el servicio sigue vivo; lo importante para
 //  el laboratorio es que SAST/CodeQL detecten la INYECCION SQL en el codigo.
 
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const config = require('./config');
 
 let conexion = null;
@@ -28,7 +28,9 @@ try {
 //   La solucion son consultas parametrizadas (placeholders '?').
 //   CWE-89 (SQL Injection)
 function buscarBitacora(nombre, callback) {
-  const sql = "SELECT * FROM bitacora WHERE usuario = '" + nombre + "'";
+ const sql = 'SELECT * FROM bitacora WHERE usuario = ?';
+conexion.query(sql, [nombre], (err, filas) => callback(null, { filas }));
+
   if (!conexion) {
     return callback(null, { sqlEjecutado: sql, filas: [] });
   }
