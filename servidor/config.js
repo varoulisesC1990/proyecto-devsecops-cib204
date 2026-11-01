@@ -14,11 +14,8 @@ const config = {
   AWS_ACCESS_KEY_ID: 'AKIAIOSFODNN7EXAMPLE',
   AWS_SECRET_ACCESS_KEY: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
 
-  // Secreto para firmar/verificar tokens propios: quemado (mal)
-  JWT_SECRET: 'sup3r-s3cr3t0-cib204-no-lo-cambies',
-
-  // Cadena de conexion con contrasena en claro (mal)
-  DATABASE_URL: 'mysql://root:Admin1234@localhost:3306/appmovil',
+  JWT_SECRET: process.env.JWT_SECRET, 
+  DATABASE_URL: process.env.DATABASE_URL,
 
   // Control de acceso DESACTIVADO por defecto (mal)
   AUTH_ENABLED: process.env.AUTH_ENABLED === 'true' ? true : false,
