@@ -3,16 +3,11 @@
 //  >>> VERSION INSEGURA <<<  Contiene secretos quemados a proposito.
 // ============================================================================
 
-// [VULN-2] Secretos quemados en el codigo (hardcoded credentials).
-//   Nunca deben vivir en el repositorio: los detecta Gitleaks y Semgrep.
-//   La solucion es leerlos de variables de entorno (process.env) y NUNCA
-//   versionarlos. Las llaves de abajo son de ejemplo/ficticias.
-//   CWE-798 (Use of Hard-coded Credentials) / CWE-259
+// Las credenciales de nube se leen del entorno y no deben versionarse.
 
 const config = {
-  // Credencial de nube ficticia (patron que Gitleaks reconoce como AWS)
-  AWS_ACCESS_KEY_ID: 'AKIAIOSFODNN7EXAMPLE',
-  AWS_SECRET_ACCESS_KEY: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
+  AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
 
   JWT_SECRET: process.env.JWT_SECRET, 
   DATABASE_URL: process.env.DATABASE_URL,
