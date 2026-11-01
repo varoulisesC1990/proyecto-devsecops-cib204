@@ -34,7 +34,10 @@ App móvil (Expo/React Native)  ->  API de cifrado (Node.js/RSA)  ->  Keycloak (
 
 1. Crea un **Codespace** desde el botón verde *Code* → *Codespaces*.
 2. Verifica el entorno: `node --version`, `docker --version`.
-3. Levanta el stack: `docker compose up -d --build`.
+3. Configura `KEYCLOAK_ADMIN`, `KEYCLOAK_ADMIN_PASSWORD` y
+   `KEYCLOAK_ISSUER` en el entorno. `KEYCLOAK_ISSUER` debe coincidir con el
+   claim `iss` de los tokens del realm. Luego levanta el stack:
+   `docker compose up -d --build`.
 4. Ejecuta la app: `cd app-movil && npm install && npx expo start --web`.
 5. Sube un cambio (*commit* + *push*) y observa el pipeline en la pestaña
    **Actions**.

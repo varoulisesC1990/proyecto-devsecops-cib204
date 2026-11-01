@@ -70,9 +70,9 @@ export default function App() {
         <TextInput style={styles.input} value={urlServicio}
           onChangeText={setUrlServicio} autoCapitalize="none" />
 
-        <Text style={styles.label}>Token (opcional, si el IAM esta activo)</Text>
+        <Text style={styles.label}>Token de acceso de Keycloak (requerido)</Text>
         <TextInput style={styles.input} value={token}
-          onChangeText={setToken} autoCapitalize="none" placeholder="Bearer..." />
+          onChangeText={setToken} autoCapitalize="none" placeholder="Pega el token de acceso" />
 
         <Text style={styles.label}>Texto a cifrar</Text>
         <TextInput style={styles.input} value={texto} onChangeText={setTexto} />

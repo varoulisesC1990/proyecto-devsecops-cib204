@@ -9,11 +9,10 @@ services:
     ports:
       - "3000:3000"
     environment:
-      # El control de acceso arranca APAGADO (rama insegura). Se activa en la
-      # Seccion de IAM poniendo AUTH_ENABLED=true.
-      - AUTH_ENABLED=${AUTH_ENABLED:-false}
       - KEYCLOAK_URL=http://keycloak:8080
       - KEYCLOAK_REALM=appmovil
+      - KEYCLOAK_ISSUER=${KEYCLOAK_ISSUER:?Set KEYCLOAK_ISSUER to the issuer advertised by Keycloak tokens}
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:8081,http://localhost:19006}
     restart: unless-stopped
 
   keycloak:
@@ -21,8 +20,8 @@ services:
     container_name: keycloak
     command: start-dev
     environment:
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KEYCLOAK_ADMIN=${KEYCLOAK_ADMIN:?Set KEYCLOAK_ADMIN in the environment}
+      - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD:?Set KEYCLOAK_ADMIN_PASSWORD in the environment}
       # === Auto-configuracion para GitHub Codespaces (SIN pasos manuales) ===
       # Codespaces define automaticamente CODESPACE_NAME y el dominio de
       # reenvio. Con eso, el compose arma solo la URL publica del puerto 8080
