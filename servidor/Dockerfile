@@ -9,7 +9,8 @@
 #   imagen slim (p.ej. node:20-slim).  CWE-1104 / mala practica de imagen.
 FROM node:20-slim AS build
 WORKDIR /app
-COPY package*.json ./ RUN npm ci --omit=dev
+COPY package*.json ./ 
+RUN npm ci --omit=dev
 COPY *.js ./
 
 FROM node:20-slim
