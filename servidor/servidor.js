@@ -12,9 +12,7 @@ const { requiereAuth } = require('./auth');
 // nosemgrep: javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage
 const app = express();
 app.use(helmet());
-app.use(cors({
-  origin: (origin, callback) => callback(null, !origin || config.CORS_ORIGINS.includes(origin)),
-}));
+app.use(cors({ origin: config.ORIGEN_PERMITIDO }));
 app.use(express.json({ limit: '16kb' }));
 
 const llaves = cifrado.generarLlaves();
