@@ -27,7 +27,7 @@ app.get('/llave', (req, res) => {
 
 app.post('/cifrar', requiereAuth, (req, res) => {
   const { texto } = req.body || {};
-  if (typeof texto !== 'string' || Buffer.byteLength(texto, 'utf8') > 190) {
+  if (typeof texto !== 'string' || Buffer.byteLength(texto, 'utf8') > 180) {
     return res.status(400).json({ error: 'Texto inválido o demasiado largo' });
   }
 
